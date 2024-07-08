@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>About the Company</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function handleNavigation($link) {
+                $link.click(function (e) {
+                    e.preventDefault();
+                    $('nav ul li a').removeClass('active-link');
+                    $link.addClass('active-link');
+                    window.location.href = $link.attr('href');
+                });
+            }
+            handleNavigation($('#apply-link'));
+            handleNavigation($('#services-link'));
+            handleNavigation($('#about-link'));
+        });
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="front.html">
+                <img src="logo.png" alt="KERA Telecommunications Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
+                <li><a id="services-link" href="services.html">Services</a></li>
+                <li><a id="about-link" href="about.html">About the Company</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="authors">
+            <div class="hero-text">
+                <h1>About the Developers</h1>
+            </div>
+            <div class="box-container">
+                <div class="box">
+                    <img src="edri.png">
+                    <h2>DAMASO, Edriana Joy R.</h2>
+                    <p>Description text goes here. You can write a few lines about what this box represents.</p>
+                </div>
+                <div class="box">
+                    <img src="rica.png">
+                    <h2>MIGUEH, Rica Joi C.</h2>
+                    <p>Description text goes here. You can write a few lines about what this box represents.</p>
+                </div>
+                <div class="box">
+                    <img src="angelo.jpg">
+                    <h2>RODELAS, Angelo</h2>
+                    <p>Description text goes here. You can write a few lines about what this box represents.</p>
+                </div>
+                <div class="box">
+                    <img src="path/to/your/image.jpg">
+                    <h2>TABIOLO, Kristine Anne</h2>
+                    <p>Description text goes here. You can write a few lines about what this box represents.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about">
+            <h2>Overview</h2>
+            <p>When seeking employment opportunities, certain employers require applicants to fill out an application
+                when applying for jobs. A General Employment Application, or a Job Application form, is a standardized
+                business document designed to efficiently collect necessary and relevant information from job
+                applicants. Its purpose is to assist recruiters and employers in determining and selecting suitable
+                candidates for specific roles within the company. This form typically includes required fields, such as
+                personal information, educational background, and employment history. Additionally, it includes a
+                section for applicants' job preferences or specific employment requirements, further streamlining the
+                hiring process.</p>
+            <p></p>
+            <p>General employment application forms are widely used across industries and businesses of all sizes,
+                showcasing their versatility in the hiring process. Whether it's a small restaurant hiring a server or a
+                multinational corporation filling multiple positions, these forms are essential for candidate
+                evaluation. In retail, they help assess customer service skills and availability, while in professional
+                services, they identify candidates with necessary qualifications. In healthcare and manufacturing, they
+                ensure compliance with industry regulations. Regardless of the sector, these forms streamline hiring,
+                helping employers find the right fit for their needs.</p>
+        </section>
+
+
+
+        <section class="business_rules">
+            <div class="text">
+                <h1>Business Rules</h1>
+            </div>
+            <div class="br-container">
+                <div class="br">
+                    <p>1. This application portal is for the sole purpose of finding interesting applicants. If the
+                        employer is interested, they will still contact the applicant for their resume or other
+                        necessary requirements.</p>
+                </div>
+                <div class="br">
+                    <p>2. A person must submit at least one application request to be considered an applicant and may
+                        submit multiple times, but their prior application should have been approved or rejected before
+                        being able to reapply again.</p>
+                </div>
+                <div class="br">
+                    <p>3. An applicant can only apply for one position per application in KERA company.</p>
+                </div>
+                <div class="br">
+                    <p>4. The KERA company only accepts one valid address, phone number, and email address.</p>
+                </div>
+                <div class="br">
+                    <p>5. The KERA company wants to know the applicant's work history for Background Overview and
+                        Personal Quality Analysis.</p>
+                </div>
+                <div class="br">
+                    <p>6. An applicant must have at least two years of work experience and can place multiple previous
+                        job experiences they had so far. </p>
+                </div>
+                <div class="br">
+                    <p>7. Applicants must at least have a bachelor's degree or higher and can input multiple degrees
+                        they have acquired so far from different or the same institutions.</p>
+                </div>
+                <div class="br">
+                    <p>8. Only people who graduated from institutions within the National Capital Region can apply.</p>
+                </div>
+                <div class="br">
+                    <p>9. The KERA company prefers applicants from institutions such as the University of the
+                        Philippines, University of Santo Tomas, Ateneo de Manila University, De La Salle University, and
+                        the Polytechnic University of the Philippines. </p>
+                </div>
+                <div class="br">
+                    <p>10. An applicant must at least have one skill relevant to the position they are applying for.</p>
+                </div>
+                <div class="br">
+                    <p>11. The KERA company prefers applicants whose previous work experience specializes in {insert
+                        skill name}.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(46, 125, 50, 0.9);
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.active-link {
+    color:gold;
+}
+
+.authors {
+    position: relative;
+    text-align: center;
+    color: white;
+    background: url('background.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-text {
+    width: 80%;
+    text-align: center;
+    background: #508D4E;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.authors h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0;
+}
+
+.authors p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.box-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.box {
+    width: 250px;
+    border: 1px solid white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #D6EFD8;
+    color: black;
+    flex-direction: column;
+    text-align: left;
+}
+
+.box img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.box h2 {
+    font-family: Anton;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.box p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.about {
+    padding: 40px 20px;
+    background-color: #80AF81;
+    color: #074405;
+    text-align: center;
+}
+
+.about h2 {
+    font-family: Anton;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: auto;
+    color: #074405;
+}
+
+.about p {
+    font-size: 1em;
+    line-height: 1.6;
+    max-width: 1300px;
+    margin-top: 20px;
+    margin: 0 auto;
+}
+
+.business_rules {
+    position: relative;
+    text-align: center;
+    background-color: #1A5319;
+    background-size: cover;
+    height: 100vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.text {
+    width: 40%;
+    text-align: center;
+    background: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.text h1 {
+    font-family: 'Anton';
+    font-size: 5em;
+    font-weight: bold;
+    color: #074405;
+    margin: 0;
+}
+
+.text p {
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+.br-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.br {
+    width: 200px;
+    border: 1px solid white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #D6EFD8;
+    color: #074405;
+    flex-direction: column;
+    text-align: left;
+}
+
+.br p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
