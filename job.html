@@ -5,7 +5,7 @@
     <title>Application Form - KERA Telecommunications</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="apply.css">
+    <link rel="stylesheet" href="css/apply.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -21,7 +21,7 @@
                 });
             }
             handleNavigation($('#apply-link'));
-            handleNavigation($('#services-link'));
+            handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
     </script>
@@ -38,8 +38,8 @@
         <nav>
             <ul>
                 <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
-                <li><a id="services-link" href="services.html">Services</a></li>
-                <li><a id="about-link" href="about.html">About the Company</a></li>
+                <li><a id="admin-link" href="admin.html">Admin</a></li>
+                <li><a id="about-link" href="about.html">About</a></li>
             </ul>
         </nav>
     </header>
@@ -51,8 +51,8 @@
                         <label for="emp_type">Employment Type:</label>
                         <select id="emp_type" name="emp_type">
                             <option value="option1"> </option>
-                            <option value="option2">part-time</option>
-                            <option value="option3">full-time</option>
+                            <option value="option2">Part-Time</option>
+                            <option value="option3">Full-Time</option>
                         </select>
                     </div>
                     <div class="form-one">
@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-one">
                         <label for="jobstart">Start of Job:</label>
-                        <input type="text" id="jobstart" name="jobstart" required>
+                        <input type="text" id="jobstart" name="jobstart" placeholder="YYYY-MM-DD" required>
                     </div>
                     <div href="perso_info.html" class="navigationtwo">
                         <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
@@ -80,27 +80,11 @@
 
     <script>
         $(function () {
-            $("#dob").datepicker({
+            $("#jobstart").datepicker({
                 dateFormat: "yy-mm-dd"
             });
         });
 
-        document.getElementById('next-button').addEventListener('click', function () {
-            var form = document.getElementById('application-form');
-            var formData = {
-                name: form.name.value,
-                dob: form.dob.value,
-                address: form.address.value,
-                city: form.city.value,
-                state: form.state.value,
-                zip: form.zip.value,
-                phone: form.phone.value,
-                email: form.email.value
-            };
-
-            localStorage.setItem('applicationData', JSON.stringify(formData));
-            window.location.href = 'school.html';
-        });
         function navigateToNextPage() {
             window.location.href = 'school.html';
         }

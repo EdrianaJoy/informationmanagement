@@ -9,16 +9,12 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: rgba(46, 125, 50, 0.9); 
+    background-color: rgba(46, 125, 50, 0.9);
     padding: 10px 20px;
 }
 
 .logo img {
-    height: 50px;
-}
-
-.active-link {
-    color:gold;
+    height: 60px;
 }
 
 nav ul {
@@ -43,28 +39,9 @@ nav ul li a {
     position: relative;
     text-align: center;
     color: white;
-    background: url('background.png') no-repeat center center;
+    background: url('images/background.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
-}
-
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80%;
-    text-align: center;
-    background: #508D4E;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.hero h1 {
-    font: 'Anton'; 
-    font-size: 3em;
-    font-weight: bold;
-    margin: 0;
 }
 
 .hero p {
@@ -87,14 +64,13 @@ nav ul li a {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70%;
-    height: 75%;
+    width: 60%;
+    height: 50%;
     text-align: center;
     background: #508D4E;
     padding: 20px;
     border-radius: 10px;
 }
-
 
 .application form {
     display: grid;
@@ -117,15 +93,21 @@ nav ul li a {
 .form-one input {
     padding: 15px;
     border: none;
-    border-radius: 10px;
+    border-radius: 15px;
     font-size: 1.2em;
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.navigationtwo {
+    float: left;
 }
 
 .navigation {
-    grid-column: span 2;
-    text-align: right;
+    float: right;
 }
 
+.navigationtwo button,
 .navigation button {
     background-color: #1A5319;
     border: none;
@@ -135,4 +117,59 @@ nav ul li a {
     font-weight: bold;
     border-radius: 5px;
     cursor: pointer;
+}
+
+.appli {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    text-align: center;
+    background: #508D4E;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.applic {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 75%;
+    text-align: center;
+    background: #508D4E;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.form-one select {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+
+
+.others form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.others {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 50%;
+    text-align: center;
+    background: #508D4E;
+    padding: 20px;
+    border-radius: 10px;
 }
