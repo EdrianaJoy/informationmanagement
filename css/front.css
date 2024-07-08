@@ -43,7 +43,7 @@ nav ul li a {
     position: relative;
     text-align: center;
     color: white;
-    background: url('css/background.png') no-repeat center center;
+    background: url('background.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
 }
