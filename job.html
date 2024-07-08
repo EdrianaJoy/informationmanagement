@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application Form - KERA Telecommunications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="apply.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="KERA Telecommunications Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="perso_info.html">Apply Now</a></li>
+                <li><a href="front.html">Services</a></li>
+                <li><a href="front.html">About the Company</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="application">
+                <form action="submit_application.php" method="post">
+                    <div class="form-one">
+                        <label for="emp_type">Employment Type:</label>
+                        <select id="emp_type" name="emp_type">
+                            <option value="option1"> </option>
+                            <option value="option2">part-time</option>
+                            <option value="option3">full-time</option>
+                        </select>
+                    </div>
+                    <div class="form-one">
+                        <label for="pos_app">Position Applying For:</label>
+                        <input type="text" id="pos_app" name="dob" required>
+                    </div>
+                    <div class="form-one">
+                        <label for="des_sal">Desired Salary:</label>
+                        <input type="text" id="des_sal" name="des_sal" required>
+                    </div>
+                    <div class="form-one">
+                        <label for="jobstart">Start of Job:</label>
+                        <input type="text" id="jobstart" name="jobstart" required>
+                    </div>
+                    <div href="perso_info.html" class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
+                    </div>
+                    <div href="school.html" class="navigation">
+                        <button class="apply-button" onclick="navigateToNextPage()">Next Page</button>
+                    </div>
+
+                </form>
+        </section>
+    </main>
+
+    <script>
+        $(function () {
+            $("#dob").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+
+        document.getElementById('next-button').addEventListener('click', function () {
+            var form = document.getElementById('application-form');
+            var formData = {
+                name: form.name.value,
+                dob: form.dob.value,
+                address: form.address.value,
+                city: form.city.value,
+                state: form.state.value,
+                zip: form.zip.value,
+                phone: form.phone.value,
+                email: form.email.value
+            };
+
+            localStorage.setItem('applicationData', JSON.stringify(formData));
+            window.location.href = 'school.html';
+        });
+        function navigateToNextPage() {
+            window.location.href = 'school.html';
+        }
+
+        function navigateToPrevPage() {
+            window.location.href = 'perso_info.html';
+        }
+    </script>
+</body>
+
+</html>
