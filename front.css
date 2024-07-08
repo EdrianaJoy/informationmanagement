@@ -17,6 +17,10 @@ header {
     height: 50px;
 }
 
+.active-link {
+    color:gold;
+}
+
 nav ul {
     list-style: none;
     margin: 0;
