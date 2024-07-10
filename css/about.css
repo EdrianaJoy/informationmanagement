@@ -107,6 +107,8 @@ nav ul li a {
 .box p {
     font-size: 1rem;
     line-height: 1.6;
+    font-style: italic;
+    text-align: justify;
 }
 
 .about {
@@ -175,8 +177,8 @@ nav ul li a {
 }
 
 .br {
-    width: 200px;
-    height: 150px;
+    width: 300px;
+    height: 200px;
     border: 1px solid white;
     padding: 20px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -188,5 +190,6 @@ nav ul li a {
 
 .br p {
     font-size: 1rem;
-    line-height: 1.6;
+    line-height: 1.5;
+    text-align: justify;
 }
