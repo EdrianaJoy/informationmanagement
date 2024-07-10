@@ -1,0 +1,106 @@
+body {
+    font-family: Roboto, Anton;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(46, 125, 50, 0.9); 
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px;
+}
+
+.active-link {
+    color:gold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    position: relative;
+    text-align: center;
+    color: white;
+    background: url('background.png') no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.hero-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 40%;
+    text-align: center;
+    background: #508D4E;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hero h1 {
+    font: 'Anton'; 
+    font-size: 3.5em;
+    font-weight: bold;
+    color: white;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 2.5 em;
+    margin: 20px 0;
+}
+
+.apply-button { 
+    background-color: #1A5319;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.form-one {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-one label {
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-one input {
+    padding: 15px;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    gap: 5px;
+    margin-bottom: 20px;
+}

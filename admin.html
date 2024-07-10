@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>KERA Telecommunications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function handleNavigation($link) {
+                $link.click(function (e) {
+                    e.preventDefault();
+                    $('nav ul li a').removeClass('active-link');
+                    $link.addClass('active-link');
+                    window.location.href = $link.attr('href');
+                });
+            }
+            handleNavigation($('#apply-link'));
+            handleNavigation($('#admin-link'));
+            handleNavigation($('#about-link'));
+        });
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="front.html">
+                <img src="images/logo.png" alt="KERA Telecommunications Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
+                <li><a id="admin-link" href="admin.html">Admin</a></li>
+                <li><a id="about-link" href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-text">
+                <h1>Admin Server</h1>
+                <form action="submit_application.php" method="post">
+                    <div class="form-one">
+                        <label for="log_in">Username:</label>
+                        <input type="text" id="log_in" name="log_in" placeholder="Inser Username" required>
+                    </div>
+                    <div class="form-one">
+                        <label for="password">Password:</label>
+                        <input type="text" id="password" name="password" placeholder="Insert Password" required>
+                    </div>
+                    <a href="database.html" class="apply-button">Log In</a>
+                </form>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>
