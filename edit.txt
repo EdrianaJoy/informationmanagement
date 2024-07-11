@@ -1,6 +1,9 @@
 currently adding edits on html, don't push anything yet
 
-done: load and save form session data in perso_info.html
-done: load and save form session data in job.html
-done: load and save form session data in school.html
-done: load and save form session data in comp.html
+done - load and save form session data in:
+
+> perso_info.html
+> job.html
+> school.html
+> comp.html
+> skills.html
