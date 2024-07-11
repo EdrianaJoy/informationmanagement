@@ -7,3 +7,5 @@ done - load and save form session data in:
 > school.html
 > comp.html
 > skills.html
+
+>result_page: clears session data
