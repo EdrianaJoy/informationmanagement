@@ -9,6 +9,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+
+            loadFormData('company-info-form'); // load form data when the page loads
+
+            $('#company-info-form').on('input', function () {
+                saveFormData('company-info-form'); // save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -21,6 +28,37 @@
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
+
+        // save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        // load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        function navigateToNextPage(e) {
+            e.preventDefault(); // prevent form submission
+            saveFormData('company-info-form'); // save form data
+            window.location.href = 'skills.html'; // navigate to the next page
+        }
+
+        function navigateToPrevPage(e) {
+            e.preventDefault(); // prevent form submission
+            saveFormData('company-info-form'); // save form data
+            window.location.href = 'school.html'; // navigate back to the prev page
+        }
     </script>
 
 </head>
@@ -43,7 +81,8 @@
     <main>
         <section class="hero">
             <div class="appli">
-                <form action="submit_application.php" method="post">
+                <form id="company-info-form"> 
+                <!-- <form action="submit_application.php" method="post"> -->
                     <div class="form-one">
                         <label for="comp_name">Company Name:</label>
                         <input type="text" id="comp_name" name="comp_name" placeholder="Previous Company Name" required>
@@ -54,21 +93,28 @@
                     </div>
                     <div class="form-one">
                         <label for="pos_comp">Position in the Company:</label>
-                        <input type="text" id="pos_comp"  name="pos_comp" placeholder="Previous Position" required>
+                        <input type="text" id="pos_comp" name="pos_comp" placeholder="Previous Position" required>
                     </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous Page</button>
+                    </div>
+                    <div class="navigation">
+                        <button class="apply-button" onclick="navigateToNextPage(event)">Next Page</button>
+                    </div>
+                    <!--
                     <div href="school.html" class="navigationtwo">
                         <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
                     </div>
                     <div href="skills.html" class="navigation">
                         <button class="apply-button" onclick="navigateToNextPage()">Next Page</button>
                     </div>
-                    
+                    -->
                 </form>
         </section>
     </main>
 
+    <!--
     <script>
-       
         function navigateToNextPage() {
             window.location.href = 'skills.html';
         }
@@ -77,6 +123,7 @@
             window.location.href = 'school.html';
         }
     </script>
+    -->
 </body>
 
 </html>

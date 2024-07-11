@@ -7,11 +7,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/apply.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-.6.0.min.js"></script>
+    <!-- invalid: <script src="https://code.jquery.com/jquery-.6.0.min.js"></script> -->
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
+
         $(document).ready(function () {
+
+            loadFormData('skills-info-form'); // load form data when the page loads
+
+            $('#skills-info-form').on('input', function () {
+                saveFormData('skills-info-form'); // save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -24,6 +32,45 @@
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
+
+        // save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        // load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        
+        function validateForm(event) {
+            event.preventDefault(); // prevent form submission
+            const form = document.getElementById('skills-info-form');
+
+            if (form.checkValidity()) {
+                saveFormData('skills-info-form'); // save form data
+                window.location.href = 'result_page.html'; // navigate to the next page
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        function navigateToPrevPage(e) {
+            e.preventDefault(); // prevent form submission
+            saveFormData('skills-info-form'); // save form data
+            window.location.href = 'comp.html'; // navigate back to the prev page
+        }
+
     </script>
 
 </head>
@@ -46,7 +93,8 @@
     <main>
         <section class="hero">
             <div class="appli">
-                <form action="submit_application.php" method="post">
+                <form id="skills-info-form">
+                    <!-- <form action="submit_application.php" method="post"> -->
                     <div class="form-one">
                         <label for="skill_one">Skills:</label>
                         <select id="skill_one" name="skill_one" required>
@@ -137,16 +185,30 @@
                             <option value="option25">Knowledge retention </option>
                         </select>
                     </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous Page</button>
+                    </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="validateForm(event)">Next Page</button>
+                    </div>
+                    <!--
+                    <div class="navigation">
+                        <button class="apply-button" onclick="navigateToNextPage(event)">Next Page</button>
+                    </div>
+                    -->
+                    <!---
                     <div href="comp.html" class="navigationtwo">
                         <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
                         </div>
                         <div href="result_page.html" class="navigation"> 
                         <button type="submit" class="apply-button">Submit</button>
                     </div>
+                    -->
                 </form>
         </section>
     </main>
 
+    <!--
     <script>
         function navigateToPrevPage() {
             window.location.href = 'comp.html';
@@ -156,6 +218,7 @@
             window.location.href = 'result_page.html';
         }
     </script>
+    -->
 </body>
 
 </html>

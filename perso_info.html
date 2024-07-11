@@ -9,9 +9,18 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- duplicate: <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+
     <script>
+
         $(document).ready(function () {
+
+            loadFormData('personal-info-form'); // load form data when the page loads
+
+            $('#personal-info-form').on('input', function () {
+                saveFormData('personal-info-form'); // save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -24,6 +33,33 @@
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
+
+        // save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        // load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+        
+        function navigateToNextPage(e) {
+            e.preventDefault(); // prevent form submission
+            saveFormData('personal-info-form'); // save form data
+            window.location.href = 'job.html'; // navigate to the next page
+        }
+        
+
     </script>
 
 </head>
@@ -46,7 +82,8 @@
     <main>
         <section class="hero">
             <div class="application">
-                <form action="submit_application.php" method="post">
+                <form id="personal-info-form">
+                    <!-- <form action="submit_application.php" method="post"> -->
                     <div class="form-one">
                         <label for="app_name">Full Name:</label>
                         <input type="text" id="name" name="name" placeholder="Surname, First Name M.I." required>
@@ -79,8 +116,11 @@
                         <label for="email">Email Address:</label>
                         <input type="email" id="email" name="email" required>
                     </div>
-                    <div href="job.html" class="navigation">
+                    <!-- <div href="job.html" class="navigation">
                         <button class="apply-button" onclick="navigateToNextPage()">Next Page</button>
+                    </div> -->
+                    <div class="navigation">
+                        <button class="apply-button" onclick="navigateToNextPage(event)">Next Page</button>
                     </div>
                 </form>
         </section>
@@ -93,9 +133,11 @@
             });
         });
 
+        /*
         function navigateToNextPage() {
             window.location.href = 'job.html';
         }
+        */
     </script>
 </body>
 

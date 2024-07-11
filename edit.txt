@@ -1,1 +1,11 @@
 currently adding edits on html, don't push anything yet
+
+done - load and save form session data in:
+
+> perso_info.html
+> job.html
+> school.html
+> comp.html
+> skills.html
+
+>result_page: clears session data
