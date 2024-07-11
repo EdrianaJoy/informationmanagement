@@ -7,13 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/apply.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <!-- invalid: <script src="https://code.jquery.com/jquery-.6.0.min.js"></script> -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
-
         $(document).ready(function () {
-
             loadFormData('skills-info-form'); //-- load form data when the page loads
 
             $('#skills-info-form').on('input', function () {
@@ -28,12 +25,42 @@
                     window.location.href = $link.attr('href');
                 });
             }
+
             handleNavigation($('#apply-link'));
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
+
+            //-- event listener for skill selection change
+            $('#skill_one, #skill_two, #skill_three').change(function () {
+                preventDuplicateSkills();
+            });
         });
 
-        //-- function save form data to session storage
+        //-- function to prevent duplicate skills across dropdowns
+        function preventDuplicateSkills() {
+            const skillOne = $('#skill_one').val();
+            const skillTwo = $('#skill_two').val();
+            const skillThree = $('#skill_three').val();
+
+            //-- enable all options first
+            $('#skill_one option, #skill_two option, #skill_three option').prop('disabled', false);
+
+            //-- disable selected options in other dropdowns
+            if (skillOne !== '') {
+                $('#skill_two option[value="' + skillOne + '"]').prop('disabled', true);
+                $('#skill_three option[value="' + skillOne + '"]').prop('disabled', true);
+            }
+            if (skillTwo !== '') {
+                $('#skill_one option[value="' + skillTwo + '"]').prop('disabled', true);
+                $('#skill_three option[value="' + skillTwo + '"]').prop('disabled', true);
+            }
+            if (skillThree !== '') {
+                $('#skill_one option[value="' + skillThree + '"]').prop('disabled', true);
+                $('#skill_two option[value="' + skillThree + '"]').prop('disabled', true);
+            }
+        }
+
+        //-- function to save form data to session storage
         function saveFormData(formId) {
             const form = document.getElementById(formId);
             const formData = new FormData(form);
@@ -42,7 +69,7 @@
             });
         }
 
-        //-- function load form data from session storage
+        //-- function to load form data from session storage
         function loadFormData(formId) {
             const form = document.getElementById(formId);
             Array.from(form.elements).forEach((element) => {
@@ -52,12 +79,12 @@
             });
         }
 
-        //-- function to validate if all required fields have input
+        //-- function to validate form before submission
         function validateForm(event) {
             event.preventDefault(); //-- prevent form submission
             const form = document.getElementById('skills-info-form');
 
-            if (form.checkValidity()) {
+            if (form.checkValidity() && !hasDuplicateSkills()) {
                 saveFormData('skills-info-form'); //-- save form data
                 window.location.href = 'result_page.html'; //-- navigate to the next page
             } else {
@@ -65,14 +92,25 @@
             }
         }
 
+        //-- function to check if there are duplicate skills selected
+        function hasDuplicateSkills() {
+            const skillOne = $('#skill_one').val();
+            const skillTwo = $('#skill_two').val();
+            const skillThree = $('#skill_three').val();
+
+            const allSkills = [skillOne, skillTwo, skillThree];
+            const uniqueSkills = [...new Set(allSkills.filter(skill => skill !== ''))]; //-- filter out empty values
+
+            return allSkills.length !== uniqueSkills.length;
+        }
+
+        //-- function to navigate to the previous page
         function navigateToPrevPage(e) {
             e.preventDefault(); //-- prevent form submission
             saveFormData('skills-info-form'); //-- save form data
-            window.location.href = 'comp.html'; //-- navigate back to the prev page
+            window.location.href = 'comp.html'; //-- navigate back to the previous page
         }
-
     </script>
-
 </head>
 
 <body>
@@ -186,7 +224,7 @@
                         </select>
                     </div>
                     <div class="navigationtwo">
-                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button> 
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
                     </div>
                     <div class="navigationtwo">
                         <button class="apply-button" onclick="validateForm(event)">Next</button>
