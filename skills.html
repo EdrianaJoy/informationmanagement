@@ -12,13 +12,14 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
 
-        loadFormData('skills-info-form'); // load form data when the page loads
-
-        $('#skills-info-form').on('input', function () {
-            saveFormData('skills-info-form'); // save form data on input change
-        });
-
         $(document).ready(function () {
+
+            loadFormData('skills-info-form'); // load form data when the page loads
+
+            $('#skills-info-form').on('input', function () {
+                saveFormData('skills-info-form'); // save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
