@@ -55,7 +55,7 @@ nav ul li a {
 .hero-text {
     width: 80%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
     margin-bottom: 20px;
@@ -138,7 +138,7 @@ nav ul li a {
 .business_rules {
     position: relative;
     text-align: center;
-    background-color: #1A5319;
+    background: rgba(80, 141, 78, 0.9);
     background-size: cover;
     height: 100vh; 
     display: flex;

@@ -68,7 +68,7 @@ nav ul li a {
     width: 60%;
     height: 60;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -99,12 +99,12 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
-.navigationtwo {
-    float: left;
-}
-
 .navigation {
     float: right;
+}
+
+.navigationtwo {
+    float: left;
 }
 
 .navigationtwo button,
@@ -127,9 +127,9 @@ nav ul li a {
     overflow-y: auto;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 70%;
+    height: 80%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -140,9 +140,9 @@ nav ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 75%;
+    height: 65%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -169,7 +169,7 @@ nav ul li a {
     width: 60%;
     height: 50%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
