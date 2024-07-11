@@ -52,10 +52,17 @@
             });
         }
 
-        function navigateToNextPage(e) {
-            e.preventDefault(); // prevent form submission
-            saveFormData('skills-info-form'); // save form data
-            window.location.href = 'result_page.html'; // navigate to the next page
+        
+        function validateForm(event) {
+            event.preventDefault(); // prevent form submission
+            const form = document.getElementById('skills-info-form');
+
+            if (form.checkValidity()) {
+                saveFormData('skills-info-form'); // save form data
+                window.location.href = 'result_page.html'; // navigate to the next page
+            } else {
+                form.reportValidity();
+            }
         }
 
         function navigateToPrevPage(e) {
@@ -181,9 +188,14 @@
                     <div class="navigationtwo">
                         <button class="apply-button" onclick="navigateToPrevPage(event)">Previous Page</button>
                     </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="validateForm(event)">Next Page</button>
+                    </div>
+                    <!--
                     <div class="navigation">
                         <button class="apply-button" onclick="navigateToNextPage(event)">Next Page</button>
                     </div>
+                    -->
                     <!---
                     <div href="comp.html" class="navigationtwo">
                         <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
