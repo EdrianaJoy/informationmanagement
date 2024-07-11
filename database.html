@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>KERA Telecommunications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/database.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function handleNavigation($link) {
+                $link.click(function (e) {
+                    e.preventDefault();
+                    $('nav ul li a').removeClass('active-link');
+                    $link.addClass('active-link');
+                    window.location.href = $link.attr('href');
+                });
+            }
+            handleNavigation($('#apply-link'));
+            handleNavigation($('#admin-link'));
+            handleNavigation($('#about-link'));
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="front.html">
+                <img src="images/logo.png" alt="KERA Telecommunications Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
+                <li><a id="admin-link" href="admin.html">Admin</a></li>
+                <li><a id="about-link" href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="view">
+            <div class="view-text">
+                <h2>View Applicants</h2>
+                <input type="text" placeholder="Search applicant by name..." class="search-box">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>brgy umiiyak na hindi na alam gagawin</td>
+                            <td>1234567890@gmail.com</td>
+                            <td>Dead</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <button class="update">Update</button>
+                    <button class="delete">Delete</button>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
