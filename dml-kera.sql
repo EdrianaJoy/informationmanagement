@@ -15,16 +15,16 @@ VALUES ('John Smith', '1997-02-26', '8213 Ayala Avenue', 'Makati City', 'Metro M
     
 -- Insert records in Request table
 INSERT INTO Request (emp_type, pos_app, des_sal, date_start, req_status, app_id)
-VALUES ('Full-time', 'Technical Support Specialist', 45000, '2024-07-23', 'Accepted', 1),
-	('Full-time', 'Account Executive', 60000, '2024-09-05', 'Rejected', 2),
-    ('Part-time', 'Data Entry Clerk', 32000, '2024-11-11', 'Accepted', 3),
-    ('Part-time', 'Call Center Agent', 28000, '2024-08-12', 'Pending', 4),
-    ('Part-time', 'Content Moderator', 25000, '2024-10-25', 'Pending', 5),
-    ('Full-time', 'Human Resources Assistant', 52000, '2024-12-13', 'Accepted', 6),
-    ('Part-time', 'Telemarketer', 40000, '2024-07-20', 'Pending', 7),
-    ('Full-time', 'Social Media Specialist', 28000, '2024-08-14', 'Rejected', 8),
-    ('Full-time', 'Quality Assurance Analyst', 31000, '2024-09-05', 'Rejected', 9),
-    ('Full-time', 'Social Media Specialist', 31000, '2024-10-13', 'Pending', 10);
+VALUES ('Full-Time', 'Technical Support Specialist', 45000, '2024-07-23', 'Accepted', 1),
+	('Full-Time', 'Account Executive', 60000, '2024-09-05', 'Rejected', 2),
+    ('Part-Time', 'Data Entry Clerk', 32000, '2024-11-11', 'Accepted', 3),
+    ('Part-Time', 'Call Center Agent', 28000, '2024-08-12', 'Pending', 4),
+    ('Part-Time', 'Content Moderator', 25000, '2024-10-25', 'Pending', 5),
+    ('Full-Time', 'Human Resources Assistant', 52000, '2024-12-13', 'Accepted', 6),
+    ('Part-Time', 'Telemarketer', 40000, '2024-07-20', 'Pending', 7),
+    ('Full-Time', 'Social Media Specialist', 28000, '2024-08-14', 'Rejected', 8),
+    ('Full-Time', 'Quality Assurance Analyst', 31000, '2024-09-05', 'Rejected', 9),
+    ('Full-Time', 'Social Media Specialist', 31000, '2024-10-13', 'Pending', 10);
     
 -- Insert records in Work table
 INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
