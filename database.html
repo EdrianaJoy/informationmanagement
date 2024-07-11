@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>KERA Telecommunications</title>
+    <title>Applicant Database</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/database.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -22,9 +21,7 @@
             handleNavigation($('#about-link'));
         });
     </script>
-
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -41,23 +38,36 @@
         </nav>
     </header>
     <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Admin Server</h1>
-                <form action="submit_application.php" method="post">
-                    <div class="form-one">
-                        <label for="log_in">Username:</label>
-                        <input type="text" id="log_in" name="log_in" placeholder="Insert Username" required>
-                    </div>
-                    <div class="form-one">
-                        <label for="password">Password:</label>
-                        <input type="text" id="password" name="password" placeholder="Insert Password" required>
-                    </div>
-                    <a href="database.html" class="apply-button">Log In</a>
-                </form>
+        <section class="view">
+            <div class="view-text">
+                <h2>Applicant Database</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>brgy umiiyak na hindi na alam gagawin</td>
+                            <td>1234567890@gmail.com</td>
+                            <td>Dead</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <a class="update" >Update</a>
+                    <a class="delete">Delete</a>
+                </div>
             </div>
         </section>
     </main>
 </body>
-
 </html>

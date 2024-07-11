@@ -1,5 +1,5 @@
 body {
-    font-family: Roboto, Anton;
+    font-family: 'Roboto', 'Anton';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +18,7 @@ header {
 }
 
 .active-link {
-    color:gold;
+    color: gold;
 }
 
 nav ul {
@@ -39,68 +39,79 @@ nav ul li a {
     font-weight: bold;
 }
 
-.hero {
+.view {
     position: relative;
     text-align: center;
     color: white;
     background: url('background.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 45%;
+.view-text {
+    width: 80%;
     text-align: center;
     background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
 
-.hero h1 {
-    font: 'Anton'; 
-    font-size: 3.5em;
+.view h2 {
+    font-family: 'Anton', sans-serif; 
+    font-size: 3em;
     font-weight: bold;
-    color: white;
-    margin: 0;
+    margin: 0 0 20px 0;
 }
 
-.hero p {
-    font-size: 2.5 em;
-    margin: 20px 0;
-}
-
-.apply-button { 
-    background-color: #1A5319;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.form-one {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-one label {
-    font-size: 1.5em;
-    font-weight: bold;
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-.form-one input {
-    padding: 15px;
-    border: none;
-    border-radius: 15px;
-    font-size: 1.2em;
-    gap: 5px;
+.search-box {
+    padding: 10px;
+    width: 80%;
     margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.update, .delete {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.update:hover {
+    background-color: #1f6421;
+}
+
+.delete {
+    background-color: #f44336;
+}
+
+.delete:hover {
+    background-color: #da190b;
 }

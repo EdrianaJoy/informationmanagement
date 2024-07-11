@@ -1,5 +1,5 @@
 body {
-    font-family: Roboto, Anton;
+    font-family: 'Roboto', 'Anton';
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -18,7 +18,7 @@ header {
 }
 
 .active-link {
-    color:gold;
+    color: gold;
 }
 
 nav ul {
@@ -39,68 +39,69 @@ nav ul li a {
     font-weight: bold;
 }
 
-.hero {
+.update {
     position: relative;
     text-align: center;
     color: white;
     background: url('background.png') no-repeat center center;
     background-size: cover;
     height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 50%;
-    height: 45%;
+.update-applicant {
+    width: 80%;
     text-align: center;
     background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
 
-.hero h1 {
-    font: 'Anton'; 
-    font-size: 3.5em;
-    font-weight: bold;
-    color: white;
-    margin: 0;
-}
-
-.hero p {
-    font-size: 2.5 em;
-    margin: 20px 0;
-}
-
-.apply-button { 
-    background-color: #1A5319;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 1.2em;
-    font-weight: bold;
-}
-
-.form-one {
+.update form {
     display: flex;
     flex-direction: column;
+    gap: 10px;
 }
 
-.form-one label {
-    font-size: 1.5em;
+.update form label {
     font-weight: bold;
-    text-align: left;
-    margin-bottom: 10px;
 }
 
-.form-one input {
-    padding: 15px;
+.update form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.update button {
+    padding: 10px 20px;
     border: none;
-    border-radius: 15px;
-    font-size: 1.2em;
-    gap: 5px;
-    margin-bottom: 20px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.update .back {
+    background-color: #f44336;
+    margin-top: 10px;
+}
+
+.update button:hover {
+    background-color: #1f6421;
+}
+
+.update .back:hover {
+    background-color: #da190b;
+}
+
+.update-applicant h2 {
+    font-family: 'Anton', sans-serif; 
+    font-size: 3em;
+    font-weight: bold;
+    margin: 0 0 20px 0;
 }

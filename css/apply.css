@@ -41,6 +41,7 @@ nav ul li a {
     color: white;
     background: url('background.png') no-repeat center center;
     background-size: cover;
+    min-height: 100vh;
     height: 100vh;
 }
 
@@ -65,16 +66,15 @@ nav ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 50%;
+    height: 60;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
 
 .application form {
     display: grid;
-    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -99,12 +99,12 @@ nav ul li a {
     margin-bottom: 20px;
 }
 
-.navigationtwo {
-    float: left;
-}
-
 .navigation {
     float: right;
+}
+
+.navigationtwo {
+    float: left;
 }
 
 .navigationtwo button,
@@ -123,11 +123,13 @@ nav ul li a {
     position: absolute;
     top: 50%;
     left: 50%;
+    max-height: 70vh;
+    overflow-y: auto;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 60%;
+    height: 80%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -138,9 +140,9 @@ nav ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
-    height: 75%;
+    height: 65%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -167,7 +169,7 @@ nav ul li a {
     width: 60%;
     height: 50%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
