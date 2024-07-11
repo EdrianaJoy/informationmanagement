@@ -9,6 +9,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+            sessionStorage.clear(); // clear session storage on page load
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
