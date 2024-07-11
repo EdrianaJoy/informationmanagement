@@ -7,11 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/apply.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-.6.0.min.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script>
         $(document).ready(function () {
+            loadFormData('skills-info-form'); //-- load form data when the page loads
+
+            $('#skills-info-form').on('input', function () {
+                saveFormData('skills-info-form'); //-- save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -20,12 +25,103 @@
                     window.location.href = $link.attr('href');
                 });
             }
+
             handleNavigation($('#apply-link'));
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
-        });
-    </script>
 
+            //-- event listener for skill selection change
+            $('#skill_one, #skill_two, #skill_three, #skill_four').change(function () {
+                preventDuplicateSkills();
+            });
+        });
+
+        //-- function to prevent duplicate skills across dropdowns
+        function preventDuplicateSkills() {
+            const skillOne = $('#skill_one').val();
+            const skillTwo = $('#skill_two').val();
+            const skillThree = $('#skill_three').val();
+            const skillFour = $('#skill_four').val();
+
+            //-- enable all options first
+            $('#skill_one option, #skill_two option, #skill_three option, #skill_four option').prop('disabled', false);
+
+            //-- disable selected options in other dropdowns
+            if (skillOne !== '') {
+                $('#skill_two option[value="' + skillOne + '"]').prop('disabled', true);
+                $('#skill_three option[value="' + skillOne + '"]').prop('disabled', true);
+                $('#skill_four option[value="' + skillOne + '"]').prop('disabled', true);
+            }
+            if (skillTwo !== '') {
+                $('#skill_one option[value="' + skillTwo + '"]').prop('disabled', true);
+                $('#skill_three option[value="' + skillTwo + '"]').prop('disabled', true);
+                $('#skill_four option[value="' + skillTwo + '"]').prop('disabled', true);
+            }
+            if (skillThree !== '') {
+                $('#skill_one option[value="' + skillThree + '"]').prop('disabled', true);
+                $('#skill_two option[value="' + skillThree + '"]').prop('disabled', true);
+                $('#skill_four option[value="' + skillThree + '"]').prop('disabled', true);
+            }
+
+            if (skillFour !== '') {
+                $('#skill_one option[value="' + skillFour + '"]').prop('disabled', true);
+                $('#skill_two option[value="' + skillFour + '"]').prop('disabled', true);
+                $('#skill_three option[value="' + skillFour + '"]').prop('disabled', true);
+            }
+        }
+
+        //-- function to save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        //-- function to load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        //-- function to validate form before submission
+        function validateForm(event) {
+            event.preventDefault(); //-- prevent form submission
+            const form = document.getElementById('skills-info-form');
+
+            if (form.checkValidity() && !hasDuplicateSkills()) {
+                saveFormData('skills-info-form'); //-- save form data
+                window.location.href = 'result_page.html'; //-- navigate to the next page
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        //-- function to check if there are duplicate skills selected
+        function hasDuplicateSkills() {
+            const skillOne = $('#skill_one').val();
+            const skillTwo = $('#skill_two').val();
+            const skillThree = $('#skill_three').val();
+            const skillFour = $('#skill_four').val();
+
+            const allSkills = [skillOne, skillTwo, skillThree, skillFour];
+            const uniqueSkills = [...new Set(allSkills.filter(skill => skill !== ''))]; //-- filter out empty values
+
+            return allSkills.length !== uniqueSkills.length;
+        }
+
+        //-- function to navigate to the previous page
+        function navigateToPrevPage(e) {
+            e.preventDefault(); //-- prevent form submission
+            saveFormData('skills-info-form'); //-- save form data
+            window.location.href = 'comp.html'; //-- navigate back to the previous page
+        }
+    </script>
 </head>
 
 <body>
@@ -46,7 +142,9 @@
     <main>
         <section class="hero">
             <div class="appli">
-                <form action="submit_application.php" method="post">
+                <form id="skills-info-form">
+                    <!-- <form action="submit_application.php" method="post"> -->
+                    <!-- rs for removal: php will not be used -->
                     <div class="form-one">
                         <label for="skill_one">Skills:</label>
                         <select id="skill_one" name="skill_one" required>
@@ -137,25 +235,45 @@
                             <option value="option25">Knowledge retention </option>
                         </select>
                     </div>
-                    <div href="comp.html" class="navigationtwo">
-                        <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
-                        </div>
-                        <div href="result_page.html" class="navigation"> 
-                        <button type="submit" class="apply-button">Submit</button>
+                    <div class="form-one">
+                        <label for="skill_four">Skills:</label>
+                        <select id="skill_four" name="skill_four" required>
+                            <option value="option1"> </option>
+                            <option value="option2">Communication</option>
+                            <option value="option3">Problem solving</option>
+                            <option value="option4">Empathy </option>
+                            <option value="option5">Attention to detail </option>
+                            <option value="option6">Adaptability </option>
+                            <option value="option7">Computer literacy </option>
+                            <option value="option8">Patience </option>
+                            <option value="option9">Organization </option>
+                            <option value="option10">Clear communication </option>
+                            <option value="option11">Technical proficiency </option>
+                            <option value="option12">Active listening </option>
+                            <option value="option13">Analytical skills </option>
+                            <option value="option14">Leadership </option>
+                            <option value="option15">Multitasking </option>
+                            <option value="option16">Organizational ability </option>
+                            <option value="option17">Interpersonal communication
+                            <option value="option18">Bilingualism </option>
+                            <option value="option19">Emotional intelligence </option>
+                            <option value="option20">Product knowledge </option>
+                            <option value="option21">Flexibility </option>
+                            <option value="option22">Calm under pressure </option>
+                            <option value="option23">Friendly </option>
+                            <option value="option24">Speed </option>
+                            <option value="option25">Knowledge retention </option>
+                        </select>
+                    </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
+                    </div>
+                    <div class="navigation">
+                        <button class="apply-button" onclick="validateForm(event)">Submit</button>
                     </div>
                 </form>
         </section>
     </main>
-
-    <script>
-        function navigateToPrevPage() {
-            window.location.href = 'comp.html';
-        }
-
-        function navigateToNextPage() {
-            window.location.href = 'result_page.html';
-        }
-    </script>
 </body>
 
 </html>

@@ -9,9 +9,16 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         $(document).ready(function () {
+
+            loadFormData('job-info-form'); //-- load form data when the page loads
+
+            $('#job-info-form').on('input', function () {
+                saveFormData('job-info-form'); //-- save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -24,6 +31,45 @@
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
+
+        //-- function to save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        //-- function to load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        //-- function to validate if all required fields have input
+        function validateForm(event) {
+            event.preventDefault(); //-- prevent form submission
+            const form = document.getElementById('job-info-form');
+
+            if (form.checkValidity()) {
+                saveFormData('job-info-form'); //-- save form data
+                window.location.href = 'school.html'; //-- navigate to the next page
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        //-- function to navigate back to prev page
+        function navigateToPrevPage(e) {
+            e.preventDefault(); //-- prevent form submission
+            saveFormData('job-info-form'); //-- save form data
+            window.location.href = 'perso_info.html'; //-- navigate back to the prev page
+        }
     </script>
 
 </head>
@@ -46,7 +92,8 @@
     <main>
         <section class="hero">
             <div class="application">
-                <form action="submit_application.php" method="post">
+                <form id="job-info-form">
+                    <!-- <form action="submit_application.php" method="post"> --> <!-- rs for removal: php will not be used -->
                     <div class="form-one">
                         <label for="emp_type">Employment Type:</label>
                         <select id="emp_type" name="emp_type" required>
@@ -77,7 +124,6 @@
                             <option value="option17">Team Lead</option>
                             <option value="option18">Trainer</option>
                             <option value="option19">Recruiter</option>
-
                         </select>
                         <div class="form-one">
                             <label for="des_sal">Desired Salary:</label>
@@ -85,15 +131,14 @@
                         </div>
                         <div class="form-one">
                             <label for="jobstart">Start of Job:</label>
-                            <input type="text" id="jobstart" name="jobstart" placeholder="YYYY-MM-DD" required>
+                            <input type="text" id="jobstart" name="jobstart" placeholder="YYYY-MM-DD" autocomplete="off" required>
                         </div>
-                        <div href="perso_info.html" class="navigationtwo">
-                            <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
+                        <div class="navigationtwo">
+                            <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
                         </div>
-                        <div href="school.html" class="navigation">
-                            <button class="apply-button" onclick="navigateToNextPage()">Next Page</button>
+                        <div class="navigation">
+                            <button class="apply-button" onclick="validateForm(event)">Next</button> <!-- "Next Page" -> "Next" -->
                         </div>
-
                 </form>
         </section>
     </main>
@@ -104,14 +149,6 @@
                 dateFormat: "yy-mm-dd"
             });
         });
-
-        function navigateToNextPage() {
-            window.location.href = 'school.html';
-        }
-
-        function navigateToPrevPage() {
-            window.location.href = 'perso_info.html';
-        }
     </script>
 </body>
 
