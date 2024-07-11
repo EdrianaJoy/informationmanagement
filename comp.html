@@ -7,8 +7,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/apply.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
     <script>
         $(document).ready(function () {
+
+            loadFormData('company-info-form'); //-- load form data when the page loads
+
+            $('#company-info-form').on('input', function () {
+                saveFormData('company-info-form'); //-- save form data on input change
+            });
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -21,6 +29,45 @@
             handleNavigation($('#admin-link'));
             handleNavigation($('#about-link'));
         });
+
+        //-- function save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        //-- function load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        //-- function to validate if all required fields have input
+        function validateForm(event) {
+            event.preventDefault(); //-- prevent form submission
+            const form = document.getElementById('company-info-form');
+
+            if (form.checkValidity()) {
+                saveFormData('company-info-form'); //-- save form data
+                window.location.href = 'skills.html'; //-- navigate to the next page
+            } else {
+                form.reportValidity();
+            }
+        }
+
+        //-- function to navigate back to prev page
+        function navigateToPrevPage(e) {
+            e.preventDefault(); //-- prevent form submission
+            saveFormData('company-info-form'); //-- save form data
+            window.location.href = 'school.html'; //-- navigate back to the prev page
+        }
     </script>
 
 </head>
@@ -43,7 +90,8 @@
     <main>
         <section class="hero">
             <div class="appli">
-                <form action="submit_application.php" method="post">
+                <form id="company-info-form"> 
+                <!-- <form action="submit_application.php" method="post"> --> <!-- rs for removal: php will not be used -->
                     <div class="form-one">
                         <label for="comp_name">Company Name:</label>
                         <input type="text" id="comp_name" name="comp_name" placeholder="Previous Company Name" required>
@@ -54,29 +102,17 @@
                     </div>
                     <div class="form-one">
                         <label for="pos_comp">Position in the Company:</label>
-                        <input type="text" id="pos_comp"  name="pos_comp" placeholder="Previous Position" required>
+                        <input type="text" id="pos_comp" name="pos_comp" placeholder="Previous Position" required>
                     </div>
-                    <div href="school.html" class="navigationtwo">
-                        <button class="apply-button" onclick="navigateToPrevPage()">Previous Page</button>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
                     </div>
-                    <div href="skills.html" class="navigation">
-                        <button class="apply-button" onclick="navigateToNextPage()">Next Page</button>
+                    <div class="navigation">
+                        <button class="apply-button" onclick="validateForm(event)">Next</button>
                     </div>
-                    
                 </form>
         </section>
     </main>
-
-    <script>
-       
-        function navigateToNextPage() {
-            window.location.href = 'skills.html';
-        }
-
-        function navigateToPrevPage() {
-            window.location.href = 'school.html';
-        }
-    </script>
 </body>
 
 </html>
