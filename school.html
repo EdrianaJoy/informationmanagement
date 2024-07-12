@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    
+
     <script>
         $(document).ready(function () {
 
@@ -64,7 +64,7 @@
             }
         }
 
-        
+
         //-- function to navigate back to prev page
         function navigateToPrevPage(e) {
             e.preventDefault(); //-- prevent form submission
@@ -94,7 +94,8 @@
         <section class="hero">
             <div class="applic">
                 <form id="school-info-form">
-                <!-- <form action="submit_application.php" method="post"> --> <!-- rs for removal: php will not be used -->
+                    <!-- <form action="submit_application.php" method="post"> -->
+                    <!-- rs for removal: php will not be used -->
                     <div class="form-one">
                         <label for="school_name">School Name:</label>
                         <select id="school_name" name="school_name" placeholder="Latest University Enrolled in"
@@ -194,7 +195,6 @@
                             <option value="option91">University of the East</option>
                             <option value="option92">University of the Philippines - Diliman</option>
                             <option value="option93">University of the Philippines - Manila</option>
-
                         </select>
                     </div>
                     <div class="form-one">
@@ -203,7 +203,8 @@
                     </div>
                     <div class="form-one">
                         <label for="date_grad">Date Graduated:</label>
-                        <input type="text" id="date_grad" name="date_grad" placeholder="YYYY-MM-DD" autocomplete="off" required>
+                        <input type="text" id="date_grad" name="date_grad" placeholder="YYYY-MM-DD" autocomplete="off"
+                            required>
                     </div>
                     <div class="form-one">
                         <label for="educ_attain">Educational Attainment (Program Taken):</label>
@@ -211,14 +212,23 @@
                             required>
                     </div>
                     <div class="navigationtwo">
-                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button> <!-- "Previous Page" -> "Previous" -->
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
+                        <!-- "Previous Page" -> "Previous" -->
                     </div>
                     <div class="navigation">
-                        <button class="apply-button" onclick="validateForm(event)">Next</button> <!-- "Next Page" -> "Next" -->
+                        <button class="apply-button" onclick="validateForm(event)">Next</button>
+                        <!-- "Next Page" -> "Next" -->
                     </div>
                 </form>
         </section>
     </main>
+    <script>
+        $(function () {
+            $("#date_grad").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
 </body>
 
 </html>

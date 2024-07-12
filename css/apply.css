@@ -74,7 +74,7 @@ nav ul li a {
 }
 
 .application form {
-    display: grid;
+    /*display: grid;*/
     gap: 20px;
 }
 
