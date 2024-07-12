@@ -54,10 +54,10 @@
         //-- NEW: manual storage of form data for data fetching/retrieval 
         function storeFormData(page) {
             const formData = {} 
-            formData.school_name = document.getElementID('school_name').value;
-            formData.school_loc = document.getElementID('school_loc').value;
-            formData.date_grad = document.getElementID('date_grad').value;
-            formData.educ_attain = document.getElementID('educ_attain').value;
+            formData.school_name = document.getElementById('school_name').value;
+            formData.school_loc = document.getElementById('school_loc').value;
+            formData.date_grad = document.getElementById('date_grad').value;
+            formData.educ_attain = document.getElementById('educ_attain').value;
 
             sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
         }

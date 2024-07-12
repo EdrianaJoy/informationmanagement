@@ -53,10 +53,17 @@
         // -- NEW: manual storage of form data for fetching/retrieval 
         function storeFormData(page) {
             const formData = {} 
-            formData.emp_type = document.getElementID('emp_type').value;
-            formData.pos_app = document.getElementID('pos_app').value;
-            formData.des_sal = document.getElementID('des_sal').value;
-            formData.jobstart = document.getElementID('jobstart').value;
+
+            const selectEmpType = document.getElementById("emp_type");
+            const indexEmpType = selectEmpType.selectedIndex;
+            formData.emp_type = selectEmpType.options[indexEmpType].text;
+
+            const selectPosApp = document.getElementById("pos_app");
+            const indexPosApp = selectPosApp.selectedIndex;
+            formData.pos_app = selectPosApp.options[indexPosApp].text;
+
+            formData.des_sal = document.getElementById('des_sal').value;
+            formData.jobstart = document.getElementById('jobstart').value;
 
             sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
         }

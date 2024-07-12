@@ -52,15 +52,15 @@
         //-- NEW: manual storage of form data for data fetching/retrieval 
         function storeFormData(page) {
             const formData = {} 
-            formData.comp_name_1 = document.getElementID('comp_name_1').value;
-            formData.doy_1 = document.getElementID('doy_1').value;
-            formData.pos_comp_1 = document.getElementID('pos_comp_1').value;
-            formData.comp_name_2 = document.getElementID('comp_name_2').value;
-            formData.doy_2 = document.getElementID('doy_2').value;
-            formData.pos_comp_2 = document.getElementID('pos_comp_2').value;
-            formData.comp_name_3 = document.getElementID('comp_name_3').value;
-            formData.doy_3 = document.getElementID('doy_3').value;
-            formData.pos_comp_3 = document.getElementID('pos_comp_3').value;
+            formData.comp_name_1 = document.getElementById('comp_name_1').value;
+            formData.doy_1 = document.getElementById('doy_1').value;
+            formData.pos_comp_1 = document.getElementById('pos_comp_1').value;
+            formData.comp_name_2 = document.getElementById('comp_name_2').value;
+            formData.doy_2 = document.getElementById('doy_2').value;
+            formData.pos_comp_2 = document.getElementById('pos_comp_2').value;
+            formData.comp_name_3 = document.getElementById('comp_name_3').value;
+            formData.doy_3 = document.getElementById('doy_3').value;
+            formData.pos_comp_3 = document.getElementById('pos_comp_3').value;
 
             sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
         }

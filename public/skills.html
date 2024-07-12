@@ -92,10 +92,10 @@
         //-- NEW: manual storage of form data for data fetching/retrieval 
         function storeFormData(page) {
             const formData = {} 
-            formData.skill_one = document.getElementID('skill_one').value;
-            formData.skill_two = document.getElementID('skill_two').value;
-            formData.skill_three = document.getElementID('skill_three').value;
-            formData.skill_four = document.getElementID('skill_four').value;
+            formData.skill_one = document.getElementById('skill_one').value;
+            formData.skill_two = document.getElementById('skill_two').value;
+            formData.skill_three = document.getElementById('skill_three').value;
+            formData.skill_four = document.getElementById('skill_four').value;
 
             sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
         }
