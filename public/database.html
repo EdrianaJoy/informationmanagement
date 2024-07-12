@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Applicant Database</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/database.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function handleNavigation($link) {
+                $link.click(function (e) {
+                    e.preventDefault();
+                    $('nav ul li a').removeClass('active-link');
+                    $link.addClass('active-link');
+                    window.location.href = $link.attr('href');
+                });
+            }
+            handleNavigation($('#apply-link'));
+            handleNavigation($('#admin-link'));
+            handleNavigation($('#about-link'));
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="front.html">
+                <img src="images/logo.png" alt="KERA Telecommunications Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
+                <li><a id="admin-link" href="admin.html">Admin</a></li>
+                <li><a id="about-link" href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="view">
+            <div class="view-text">
+                <h2>Applicant Database</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Address</th>
+                            <th>Email Address</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>John Doe</td>
+                            <td>Sta.Mesa Manila</td>
+                            <td>johndoe@gmail.com</td>
+                            <td>Pending</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Grace Diaz</td>
+                            <td>Tayuman, Binangonan, Rizal</td>
+                            <td>diazg@gmail.com</td>
+                            <td>Selected</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Felicia Soo</td>
+                            <td>Silang, Cavite</td>
+                            <td>feliciasoo89@gmail.com</td>
+                            <td>For Job Offer</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Timothee Cruz</td>
+                            <td>Makati City</td>
+                            <td>cruztimothee123@gmail.com</td>
+                            <td>Qualified</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+                <div class="buttons">
+                    <a class="update" >Update</a>
+                    <a class="delete">Delete</a>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

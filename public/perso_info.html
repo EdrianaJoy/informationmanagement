@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Application Form - KERA Telecommunications</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/front.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            loadFormData('personal-info-form'); //-- load form data when the page loads
+
+            $('#personal-info-form').on('input', function () {
+                saveFormData('personal-info-form'); //-- save form data on input change
+            });
+
+            function handleNavigation($link) {
+                $link.click(function (e) {
+                    e.preventDefault();
+                    $('nav ul li a').removeClass('active-link');
+                    $link.addClass('active-link');
+                    window.location.href = $link.attr('href');
+                });
+            }
+            handleNavigation($('#apply-link'));
+            handleNavigation($('#admin-link'));
+            handleNavigation($('#about-link'));
+        });
+
+        //-- function to save form data to session storage
+        function saveFormData(formId) {
+            const form = document.getElementById(formId);
+            const formData = new FormData(form);
+            formData.forEach((value, key) => {
+                sessionStorage.setItem(key, value);
+            });
+        }
+
+        //-- function to load form data from session storage
+        function loadFormData(formId) {
+            const form = document.getElementById(formId);
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                }
+            });
+        }
+
+        //-- function to validate if all required fields have input
+        function validateForm(event) {
+            event.preventDefault(); //-- prevent form submission
+            const form = document.getElementById('personal-info-form');
+
+            if (form.checkValidity()) {
+                saveFormData('personal-info-form'); //-- save form data
+                window.location.href = 'job.html'; //-- navigate to the next page
+            } else {
+                form.reportValidity();
+            }
+        }
+
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="front.html">
+                <img src="images/logo.png" alt="KERA Telecommunications Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a id="apply-link" href="perso_info.html">Apply Now</a></li>
+                <li><a id="admin-link" href="admin.html">Admin</a></li>
+                <li><a id="about-link" href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="application">
+                <form method = 'POST' action = '/form'>
+                    <form id="personal-info-form" >
+                        <!-- <form action="submit_application.php" method="post"> --> <!-- rs for removal: php will not be used -->
+                        <div class="form-one">
+                            <label for="app_name">Full Name:</label>
+                            <input type="text" id="name" name="name" placeholder="Surname, First Name M.I." required>
+                        </div>
+                        <div class="form-one">
+                            <label for="dob">Date of Birth:</label>
+                            <input type="text" id="dob" name="dob" placeholder="YYYY-MM-DD" autocomplete="off" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="address">Address:</label>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="city">City:</label>
+                            <input type="text" id="city" name="city" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="state">State:</label>
+                            <input type="text" id="state" name="state" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="zip">Zip Code:</label>
+                            <input type="text" id="zip" name="zip" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+63 **********" required>
+                        </div>
+                        <div class="form-one">
+                            <label for="email">Email Address:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="navigation">
+                            <button class="apply-button" onclick="validateForm(event)">Next</button> <!-- "Next Page" -> "Next" -->
+                        </div>
+                    </form>
+                </form>
+        </section>
+    </main>
+
+    <script>
+        $(function () {
+            $("#dob").datepicker({
+                dateFormat: "yy-mm-dd"
+            });
+        });
+    </script>
+</body>
+
+</html>
