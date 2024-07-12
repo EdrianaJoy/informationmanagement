@@ -102,6 +102,12 @@ CREATE PROCEDURE Create_Applicant(
     IN new_comp_name VARCHAR(40),
     IN new_work_period CHAR(9),
     IN new_comp_pos VARCHAR(40),
+    IN new_comp_name_1 VARCHAR(40),
+    IN new_work_period_1 CHAR(9),
+    IN new_comp_pos_1 VARCHAR(40),
+    IN new_comp_name_2 VARCHAR(40),
+    IN new_work_period_2 CHAR(9),
+    IN new_comp_pos_2 VARCHAR(40),
     IN new_school_name VARCHAR(80),
     IN new_school_loc VARCHAR(50),
     IN new_date_grad DATE,
@@ -122,19 +128,20 @@ BEGIN
     INSERT INTO Request (emp_type, pos_app, des_sal, date_start, app_id)
     VALUES (new_emp_type, new_pos_app, new_des_sal, new_date_start, @app_id);
 
-    INSERT INTO TempWork (comp_name, work_period, comp_pos, app_id)
+    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
     VALUES (new_comp_name, new_work_period, new_comp_pos, @app_id);
+
+    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
+    VALUES (new_comp_name_1, new_work_period_1, new_comp_pos_1, @app_id);
+
+    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
+    VALUES (new_comp_name_2, new_work_period_2, new_comp_pos_2, @app_id);
 
     INSERT INTO Education (app_id, school_name, school_loc, date_grad, educ_attain)
     VALUES (@app_id, new_school_name, new_school_loc, new_date_grad, new_educ_attain);
 
     INSERT INTO Skill_set (app_id, skill_one, skill_two, skill_three, skill_four)
     VALUES (@app_id, new_skill_one, new_skill_two, new_skill_three, new_skill_four);
-
-    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
-    SELECT comp_name, work_period, comp_pos, app_id
-    FROM TempWork
-    WHERE app_id = @app_id;
 
     COMMIT;
 END //
