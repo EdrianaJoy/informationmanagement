@@ -36,6 +36,7 @@ app.get('/', (req, res) => {
 app.post('/api/createapp', (req, res) => {
 
   const { app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add } = req.body;
+  console.log(app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add);
   dbConnection.query('INSERT INTO applicant (app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add], (err, result) => {
     if (err) {
       console.error('Error executing query: ' + err.stack);
