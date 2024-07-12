@@ -27,16 +27,6 @@ CREATE TABLE IF NOT EXISTS `Request` (
   FOREIGN KEY (`app_id`) REFERENCES `Applicant` (`app_id`) ON DELETE SET NULL
 );
 
--- Creates a temporary storage of data useful for adding records
-CREATE TABLE IF NOT EXISTS `TempWork` (
-  `work_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `comp_name` varchar(40) NOT NULL,
-  `work_period` char(9) NOT NULL,
-  `comp_pos` varchar(40) NOT NULL,
-  `app_id` int NOT NULL,
-  CONSTRAINT `FK_Applicant_TempWork_ID` FOREIGN KEY (`app_id`) REFERENCES `Applicant` (`app_id`) ON DELETE CASCADE
-);
-
 -- Create Work table
 CREATE TABLE IF NOT EXISTS `Work` (
   `work_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
