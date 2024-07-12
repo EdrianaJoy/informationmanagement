@@ -30,10 +30,10 @@ CREATE TABLE IF NOT EXISTS `Request` (
 -- Create Work table
 CREATE TABLE IF NOT EXISTS `Work` (
   `work_id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-  `comp_name` varchar(40) NOT NULL,
-  `work_period` char(9) NOT NULL,
-  `comp_pos` varchar(40) NOT NULL,
-  `app_id` int NOT NULL,
+  `comp_name` varchar(40),
+  `work_period` char(9),
+  `comp_pos` varchar(40),
+  `app_id` int,
   CONSTRAINT `FK_Applicant_Work_ID` FOREIGN KEY (`app_id`) REFERENCES `Applicant` (`app_id`) ON DELETE CASCADE
 );
 

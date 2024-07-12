@@ -102,6 +102,12 @@ CREATE PROCEDURE Create_Applicant(
     IN new_comp_name VARCHAR(40),
     IN new_work_period CHAR(9),
     IN new_comp_pos VARCHAR(40),
+    IN new_comp_name_1 VARCHAR(40),
+    IN new_work_period_1 CHAR(9),
+    IN new_comp_pos_1 VARCHAR(40),
+    IN new_comp_name_2 VARCHAR(40),
+    IN new_work_period_2 CHAR(9),
+    IN new_comp_pos_2 VARCHAR(40),
     IN new_school_name VARCHAR(80),
     IN new_school_loc VARCHAR(50),
     IN new_date_grad DATE,
@@ -112,24 +118,34 @@ CREATE PROCEDURE Create_Applicant(
     IN new_skill_four VARCHAR(30)
 )
 BEGIN
+    DECLARE app_count INT;
+
     START TRANSACTION;
 
-    INSERT INTO Applicant (app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add)
-    VALUES (new_app_name, new_date_birth, new_app_add, new_city, new_state, new_zip_code, new_phone_num, new_email_add);
-    
-    SET @app_id = LAST_INSERT_ID();
+    SELECT COUNT(*) INTO app_count
+    FROM Applicant
+    WHERE app_name = new_app_name AND date_birth = new_date_birth AND email_add = new_email_add;
 
-    INSERT INTO Request (emp_type, pos_app, des_sal, date_start, app_id)
-    VALUES (new_emp_type, new_pos_app, new_des_sal, new_date_start, @app_id);
-
-    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
-    VALUES (new_comp_name, new_work_period, new_comp_pos, @app_id);
-
-    INSERT INTO Education (app_id, school_name, school_loc, date_grad, educ_attain)
-    VALUES (@app_id, new_school_name, new_school_loc, new_date_grad, new_educ_attain);
-
-    INSERT INTO Skill_set (app_id, skill_one, skill_two, skill_three, skill_four)
-    VALUES (@app_id, new_skill_one, new_skill_two, new_skill_three, new_skill_four);
+    IF app_count = 0 THEN
+	    INSERT INTO Applicant (app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add)
+	    VALUES (new_app_name, new_date_birth, new_app_add, new_city, new_state, new_zip_code, new_phone_num, new_email_add);
+	    
+	    SET @app_id = LAST_INSERT_ID();
+	
+	    INSERT INTO Request (emp_type, pos_app, des_sal, date_start, app_id)
+	    VALUES (new_emp_type, new_pos_app, new_des_sal, new_date_start, @app_id);
+	
+	    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
+	    VALUES (new_comp_name, new_work_period, new_comp_pos, @app_id),
+		   (new_comp_name_1, new_work_period_1, new_comp_pos_1, @app_id),
+		   (new_comp_name_2, new_work_period_2, new_comp_pos_2, @app_id);
+	
+	    INSERT INTO Education (app_id, school_name, school_loc, date_grad, educ_attain)
+	    VALUES (@app_id, new_school_name, new_school_loc, new_date_grad, new_educ_attain);
+	
+	    INSERT INTO Skill_set (app_id, skill_one, skill_two, skill_three, skill_four)
+	    VALUES (@app_id, new_skill_one, new_skill_two, new_skill_three, new_skill_four);
+    END IF;
 
     COMMIT;
 END //
