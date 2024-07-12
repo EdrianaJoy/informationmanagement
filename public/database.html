@@ -8,6 +8,24 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
+
+            function displayForm() {
+
+                console.log("Error");
+                fetch('/api/displayapp')
+                    .then(response => response.json()) // Parse the JSON response
+                    .then(data => {
+                        // Process the fetched applicant data (e.g., display in UI)
+                        console.log(data);
+                    })
+                    .catch(error => {
+                        console.error('Error fetching applicants:', error);
+                        // Handle errors appropriately (e.g., display error message)
+                    });
+            }
+
+            displayForm();
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
