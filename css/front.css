@@ -55,7 +55,7 @@ nav ul li a {
     transform: translate(-50%, -50%);
     width: 80%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }
@@ -88,9 +88,9 @@ nav ul li a {
     left: 50%;
     transform: translate(-50%, -50%);
     width: 70%;
-    height: 75%;
+    height: 65%;
     text-align: center;
-    background: #508D4E;
+    background: rgba(80, 141, 78, 0.9);
     padding: 20px;
     border-radius: 10px;
 }

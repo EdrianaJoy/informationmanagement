@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <title>Application Form - KERA Telecommunications</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -12,7 +11,6 @@
 
     <script>
         $(document).ready(function () {
-
             loadFormData('job-info-form'); //-- load form data when the page loads
 
             $('#job-info-form').on('input', function () {
@@ -71,9 +69,7 @@
             window.location.href = 'perso_info.html'; //-- navigate back to the prev page
         }
     </script>
-
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -93,11 +89,10 @@
         <section class="hero">
             <div class="application">
                 <form id="job-info-form">
-                    <!-- <form action="submit_application.php" method="post"> --> <!-- rs for removal: php will not be used -->
                     <div class="form-one">
                         <label for="emp_type">Employment Type:</label>
                         <select id="emp_type" name="emp_type" required>
-                            <option value="option1"> </option>
+                            <option value="option1"></option>
                             <option value="option2">Part-Time</option>
                             <option value="option3">Full-Time</option>
                         </select>
@@ -125,24 +120,25 @@
                             <option value="option18">Trainer</option>
                             <option value="option19">Recruiter</option>
                         </select>
-                        <div class="form-one">
-                            <label for="des_sal">Desired Salary:</label>
-                            <input type="text" id="des_sal" name="des_sal" required>
-                        </div>
-                        <div class="form-one">
-                            <label for="jobstart">Start of Job:</label>
-                            <input type="text" id="jobstart" name="jobstart" placeholder="YYYY-MM-DD" autocomplete="off" required>
-                        </div>
-                        <div class="navigationtwo">
-                            <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
-                        </div>
-                        <div class="navigation">
-                            <button class="apply-button" onclick="validateForm(event)">Next</button> <!-- "Next Page" -> "Next" -->
-                        </div>
+                    </div>
+                    <div class="form-one">
+                        <label for="des_sal">Desired Salary:</label>
+                        <input type="text" id="des_sal" name="des_sal" required>
+                    </div>
+                    <div class="form-one">
+                        <label for="jobstart">Start of Job:</label>
+                        <input type="text" id="jobstart" name="jobstart" placeholder="YYYY-MM-DD" autocomplete="off" required>
+                    </div>
+                    <div class="navigationtwo">
+                        <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
+                    </div>
+                    <div class="navigation">
+                        <button class="apply-button" onclick="validateForm(event)">Next</button>
+                    </div>
                 </form>
+            </div>
         </section>
     </main>
-
     <script>
         $(function () {
             $("#jobstart").datepicker({
@@ -151,5 +147,4 @@
         });
     </script>
 </body>
-
 </html>
