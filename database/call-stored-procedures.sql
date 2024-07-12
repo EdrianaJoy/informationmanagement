@@ -38,4 +38,4 @@ CALL Create_Applicant(
 CALL Display_Applicant();
 
 -- Calls the procedure Update_Status(update_application) to update the status of the application
-CALL Update_Status(update_application);
+CALL Update_Status(update_application, app_id_update);

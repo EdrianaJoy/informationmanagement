@@ -168,9 +168,9 @@ DELIMITER ;
 -- Procedure for updating the status of the application
 DELIMITER //
 
-CREATE PROCEDURE Update_Status(IN update_application VARCHAR(8))
+CREATE PROCEDURE Update_Status(IN update_application VARCHAR(8), IN app_id_update INT)
 BEGIN
-	UPDATE Request SET req_status = update_application;
+	UPDATE Request SET req_status = update_application WHERE app_id = app_id_update;
 END //
 
 DELIMITER ;
