@@ -122,7 +122,7 @@ BEGIN
     INSERT INTO Request (emp_type, pos_app, des_sal, date_start, app_id)
     VALUES (new_emp_type, new_pos_app, new_des_sal, new_date_start, @app_id);
 
-    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
+    INSERT INTO TempWork (comp_name, work_period, comp_pos, app_id)
     VALUES (new_comp_name, new_work_period, new_comp_pos, @app_id);
 
     INSERT INTO Education (app_id, school_name, school_loc, date_grad, educ_attain)
@@ -130,6 +130,11 @@ BEGIN
 
     INSERT INTO Skill_set (app_id, skill_one, skill_two, skill_three, skill_four)
     VALUES (@app_id, new_skill_one, new_skill_two, new_skill_three, new_skill_four);
+
+    INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
+    SELECT comp_name, work_period, comp_pos, app_id
+    FROM Company
+    WHERE app_id = @app_id;
 
     COMMIT;
 END //
