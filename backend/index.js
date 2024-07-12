@@ -32,12 +32,24 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', 'public', 'front.html'));
 });
 
-
+//create
 app.post('/api/createapp', (req, res) => {
 
-  const { app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add } = req.body;
+  const { app_name, 
+          date_birth, 
+          app_add, 
+          city, 
+          state, 
+          zip_code, 
+          phone_num, 
+          email_add } = req.body;
+
   console.log(app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add);
-  dbConnection.query('INSERT INTO applicant (app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add) VALUES (?, ?, ?, ?, ?, ?, ?, ?);', [app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add], (err, result) => {
+
+  dbConnection.query('CALL Create_Applicant(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);'
+              ,[app_name, date_birth, app_add, city, state, zip_code, phone_num, email_add, 
+                emp_type, pos_app, des_sal, jobstart, school_name, school_loc, date_grad, educ_attain, 
+              ], (err, result) => {
     if (err) {
       console.error('Error executing query: ' + err.stack);
       res.status(400).send('Error creating applicant');
@@ -47,7 +59,7 @@ app.post('/api/createapp', (req, res) => {
   });
 });
 
-app.get('/api/applicants', (req, res) => {
+app.get('/api/displayapp', (req, res) => {
     dbConnection.query('CALL Display_Applicant();', (err, results) => {
 
         if (err) {

@@ -1,3 +1,5 @@
+
+//create
 function submitForm() {
    const formData = {};
 
@@ -6,13 +8,13 @@ function submitForm() {
 
 
    // Send data via Fetch API
-   fetch('/api/createapp', {
-      method: 'POST',
-      headers: {
-         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(formData)
-   })
+     fetch('/api/createapp', {
+          method: 'POST',
+          headers: {
+          'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+     })
       .then(response => response.json())
       .then(data => {
          console.log('Success:', data);
@@ -25,3 +27,7 @@ function submitForm() {
 }
 
 document.getElementById('submit-btn').addEventListener('click', submitForm);
+
+
+
+// document.getElementById('login-btn').addEventListener('click', displayForm);
