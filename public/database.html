@@ -26,6 +26,23 @@
 
             displayForm();
 
+            function deleteForm (applicantId) {
+
+                fetch(`/api/applicants/${applicantId}`, {
+                method: 'DELETE'
+                })
+                .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error deleting applicant: ${response.statusText}`);
+                }
+                console.log('Applicant deleted successfully');
+                })
+                .catch(error => console.error('Error:', error));
+            }
+
+            document.getElementById('app1');
+            document.getElementById('delete-btn').addEventListener('click', deleteForm);
+
             function handleNavigation($link) {
                 $link.click(function (e) {
                     e.preventDefault();
@@ -103,7 +120,7 @@
                 </table>
                 <div class="buttons">
                     <a class="update" >Update</a>
-                    <a class="delete">Delete</a>
+                    <a id="delete-btn" class="delete">Delete</a>
                 </div>
             </div>
         </section>
