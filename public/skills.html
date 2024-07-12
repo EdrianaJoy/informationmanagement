@@ -34,6 +34,12 @@
             $('#skill_one, #skill_two, #skill_three, #skill_four').change(function () {
                 preventDuplicateSkills();
             });
+
+            document.getElementById('submit-btn').addEventListener('click', function (event) {
+                console.log('Passed submit form');
+                event.preventDefault(); // Prevent the default form submission
+                submitForm();
+            });
         });
 
         //-- function to prevent duplicate skills across dropdowns
@@ -120,6 +126,44 @@
             e.preventDefault(); //-- prevent form submission
             saveFormData('skills-info-form'); //-- save form data
             window.location.href = 'comp.html'; //-- navigate back to the previous page
+        }
+
+        // Function to collect all form data and send it via Fetch API
+        function submitForm() {
+
+            const formData = {};
+
+            // Assuming there are 3 pages
+
+            const form = document.getElementById('skills-info-form');
+            Array.from(form.elements).forEach((element) => {
+                if (element.name) {
+                    element.value = sessionStorage.getItem(element.name) || '';
+                    formData[element.name] = element.value;
+                }
+            });
+
+            // const pageData = JSON.parse(sessionStorage.getItem(`formPage${i}`));
+
+            // Object.assign(formData, pageData);
+
+            // Send data via Fetch API
+            fetch('/api/createapp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log('Success:', data);
+                    // Clear sessionStorage if needed
+                    sessionStorage.clear();
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         }
     </script>
 </head>
@@ -269,11 +313,12 @@
                         <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
                     </div>
                     <div class="navigation">
-                        <button class="apply-button" id ="submit-btn" onclick="validateForm(event)">Submit</button>
+                        <button class="apply-button" id="submit-btn" onclick="validateForm(event)">Submit</button>
                     </div>
                 </form>
         </section>
     </main>
+    <!-- <script src="public\sendReq.js"></script> -->
 </body>
 
 </html>
