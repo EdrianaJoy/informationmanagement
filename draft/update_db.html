@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <title>KERA Telecommunications</title>
+    <title>Update Applicant Database</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/update.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -22,9 +21,7 @@
             handleNavigation($('#about-link'));
         });
     </script>
-
 </head>
-
 <body>
     <header>
         <div class="logo">
@@ -40,24 +37,24 @@
             </ul>
         </nav>
     </header>
-    <main>
-        <section class="hero">
-            <div class="hero-text">
-                <h1>Admin Server</h1>
-                <!-- <form action="submit_application.php" method="post"> -->
-                    <div class="form-one">
-                        <label for="log_in">Username:</label>
-                        <input type="text" id="log_in" name="log_in" placeholder="Insert Username" required>
-                    </div>
-                    <div class="form-one">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" placeholder="Insert Password" required>
-                    </div>
-                    <a href="database.html" class="apply-button">Log In</a>
-                </form>
-            </div>
-        </section>
-    </main>
+    <section class="update">
+        <div class="update-applicant">
+            <h2>Update Applicant</h2>
+            <form>
+                <label for="name">Full name</label>
+                <input type="text" id="name" name="name" value="Mary Garcia">
+                
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" value="9412323031">
+                
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" value="marygarcia@email.com">
+                
+                <button type="submit">Update</button>
+                <button class="back">Back</button>
+            </form>
+        </div>
+    </section>
+   
 </body>
-
 </html>
