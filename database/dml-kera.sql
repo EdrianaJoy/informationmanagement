@@ -133,7 +133,7 @@ BEGIN
 
     INSERT INTO Work (comp_name, work_period, comp_pos, app_id)
     SELECT comp_name, work_period, comp_pos, app_id
-    FROM Company
+    FROM TempWork
     WHERE app_id = @app_id;
 
     COMMIT;
