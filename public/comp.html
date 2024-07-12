@@ -49,12 +49,29 @@
             });
         }
 
+        //-- NEW: manual storage of form data for data fetching/retrieval 
+        function storeFormData(page) {
+            const formData = {} 
+            formData.comp_name_1 = document.getElementID('comp_name_1').value;
+            formData.doy_1 = document.getElementID('doy_1').value;
+            formData.pos_comp_1 = document.getElementID('pos_comp_1').value;
+            formData.comp_name_2 = document.getElementID('comp_name_2').value;
+            formData.doy_2 = document.getElementID('doy_2').value;
+            formData.pos_comp_2 = document.getElementID('pos_comp_2').value;
+            formData.comp_name_3 = document.getElementID('comp_name_3').value;
+            formData.doy_3 = document.getElementID('doy_3').value;
+            formData.pos_comp_3 = document.getElementID('pos_comp_3').value;
+
+            sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
+        }
+
         //-- function to validate if all required fields have input
         function validateForm(event) {
             event.preventDefault(); //-- prevent form submission
             const form = document.getElementById('company-info-form');
 
             if (form.checkValidity()) {
+                storeFormData(4); //-- NEW: function call for manual storage
                 saveFormData('company-info-form'); //-- save form data
                 window.location.href = 'skills.html'; //-- navigate to the next page
             } else {
@@ -136,6 +153,7 @@
                 </form>
         </section>
     </main>
+    <script src = 'public\sendReq.js'></script> <!-- NEW: sendReq.js script linking -->
 </body>
 
 </html>

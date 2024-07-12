@@ -51,19 +51,30 @@
             });
         }
 
+        //-- NEW: manual storage of form data for data fetching/retrieval 
+        function storeFormData(page) {
+            const formData = {} 
+            formData.school_name = document.getElementID('school_name').value;
+            formData.school_loc = document.getElementID('school_loc').value;
+            formData.date_grad = document.getElementID('date_grad').value;
+            formData.educ_attain = document.getElementID('educ_attain').value;
+
+            sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
+        }
+
         //-- function to validate if all required fields have input
         function validateForm(event) {
             event.preventDefault(); //-- prevent form submission
             const form = document.getElementById('school-info-form');
 
             if (form.checkValidity()) {
+                storeFormData(3); //-- NEW: function call for manual storage
                 saveFormData('school-info-form'); //-- save form data
                 window.location.href = 'comp.html'; //-- navigate to the next page
             } else {
                 form.reportValidity();
             }
         }
-
 
         //-- function to navigate back to prev page
         function navigateToPrevPage(e) {
@@ -229,6 +240,7 @@
             });
         });
     </script>
+    <script src = 'public\sendReq.js'></script> <!-- NEW: sendReq.js script linking -->
 </body>
 
 </html>
