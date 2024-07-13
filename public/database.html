@@ -20,7 +20,7 @@
                         const tableBody = document.getElementById('applicants-table');
                         
                         // Loop through the data and create table rows
-                        data.forEach(applicant => {
+                        data[0].forEach(applicant => {
                             console.log(applicant);
                             const row = document.createElement('tr');
                             row.innerHTML = `
