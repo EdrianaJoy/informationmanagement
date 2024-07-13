@@ -14,18 +14,21 @@
                 fetch('/api/displayapp')
                     .then(response => response.json()) // Parse the JSON response
                     .then(data => {
+
+                        console.log(data);
                         // Get the table body element
                         const tableBody = document.getElementById('applicants-table');
                         
                         // Loop through the data and create table rows
                         data.forEach(applicant => {
+                            console.log(applicant);
                             const row = document.createElement('tr');
                             row.innerHTML = `
-                                <td>${applicant[ID]}</td>
-                                <td>${applicant[Name]}</td>
-                                <td>${applicant[Address]}</td>
-                                <td>${applicant[Email_Address]}</td>
-                                <td>${applicant[Status]}</td>
+                                <td>${applicant.ID}</td>
+                                <td>${applicant.Name}</td>
+                                <td>${applicant.Address}</td>
+                                <td>${applicant.Email_Address}</td>
+                                <td>${applicant.Status}</td>
                             `;
                             
                             // Set the onclick attribute to call getSelectedRowId
@@ -84,14 +87,14 @@
 
             let selectedRowId;
 
-            function getSelectedRowId(rowElement) {
+            window.getSelectedRowId = function(rowElement) {
 
                 const firstCell = rowElement.querySelector("td:first-child"); // Selects the first child <td> element
                     
                 // Check if a first cell exists before accessing its content
                 if (firstCell) {
-                    const ID = firstCell.textContent;  // Access the text content of the cell
-                    console.log("Value of the first cell:", ID);
+                    selectedID = firstCell.textContent;  // Access the text content of the cell
+                    console.log("Value of the first cell:", selectedID);
                 } else {
                     console.error("Selected row might not have a first cell (<td>)");
                 }
@@ -106,9 +109,9 @@
                         console.error("Selected row might not have a last cell (<td>)");
                     }
 
-                document.getElementById('delete-btn').addEventListener('click', deleteForm(ID));
+                document.getElementById('delete-btn').addEventListener('click', deleteForm(selectedID));
 
-                document.getElementById('update-btn').addEventListener('click', updateForm(ID, status));
+                document.getElementById('update-btn').addEventListener('click', updateForm(selectedID, status));
             }
 
 
