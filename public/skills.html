@@ -5,7 +5,7 @@
     <title>Application Form - KERA Telecommunications</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/apply.css">
+    <link rel="stylesheet" href="/css/apply.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -89,12 +89,24 @@
             });
         }
 
+        //-- NEW: manual storage of form data for data fetching/retrieval 
+        function storeFormData(page) {
+            const formData = {} 
+            formData.skill_one = document.getElementById('skill_one').value;
+            formData.skill_two = document.getElementById('skill_two').value;
+            formData.skill_three = document.getElementById('skill_three').value;
+            formData.skill_four = document.getElementById('skill_four').value;
+
+            sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
+        }
+
         //-- function to validate form before submission
         function validateForm(event) {
             event.preventDefault(); //-- prevent form submission
             const form = document.getElementById('skills-info-form');
 
             if (form.checkValidity() && !hasDuplicateSkills()) {
+                storeFormData(5); //-- NEW: function call for manual storage
                 saveFormData('skills-info-form'); //-- save form data
                 window.location.href = 'result_page.html'; //-- navigate to the next page
             } else {
@@ -121,6 +133,7 @@
             saveFormData('skills-info-form'); //-- save form data
             window.location.href = 'comp.html'; //-- navigate back to the previous page
         }
+
     </script>
 </head>
 
@@ -269,11 +282,12 @@
                         <button class="apply-button" onclick="navigateToPrevPage(event)">Previous</button>
                     </div>
                     <div class="navigation">
-                        <button class="apply-button" onclick="validateForm(event)">Submit</button>
+                        <button class="apply-button" id="submit-btn" onclick="validateForm(event)">Submit</button>
                     </div>
                 </form>
         </section>
     </main>
+    <script src="sendReq.js"></script> 
 </body>
 
 </html>

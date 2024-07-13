@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Application Form - KERA Telecommunications</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
@@ -49,12 +50,31 @@
             });
         }
 
+        // -- NEW: manual storage of form data for fetching/retrieval 
+        function storeFormData(page) {
+            const formData = {} 
+
+            const selectEmpType = document.getElementById("emp_type");
+            const indexEmpType = selectEmpType.selectedIndex;
+            formData.emp_type = selectEmpType.options[indexEmpType].text;
+
+            const selectPosApp = document.getElementById("pos_app");
+            const indexPosApp = selectPosApp.selectedIndex;
+            formData.pos_app = selectPosApp.options[indexPosApp].text;
+
+            formData.des_sal = document.getElementById('des_sal').value;
+            formData.jobstart = document.getElementById('jobstart').value;
+
+            sessionStorage.setItem(`formPage${page}`, JSON.stringify(formData));
+        }
+
         //-- function to validate if all required fields have input
         function validateForm(event) {
             event.preventDefault(); //-- prevent form submission
             const form = document.getElementById('job-info-form');
 
             if (form.checkValidity()) {
+                storeFormData(2); //-- NEW: function call for manual storage
                 saveFormData('job-info-form'); //-- save form data
                 window.location.href = 'school.html'; //-- navigate to the next page
             } else {
