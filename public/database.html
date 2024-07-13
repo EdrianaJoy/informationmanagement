@@ -50,6 +50,8 @@
 
             function deleteForm (applicantId) {
 
+                console.log(applicantId);
+
                 fetch(`/api/deleteapp/${applicantId}`, {
                     method: 'DELETE'
                     })
@@ -64,18 +66,20 @@
 
             function updateForm (applicantId, status) {
 
+                console.log(applicantId, status);
+
                 fetch(`/api/updateapp/${applicantId}`, {
                     method: 'PUT',
                     headers: {
-                        'Content-Type': 'application/json'  // Indicate sending JSON data
+                        'Content-Type': 'application/json'  
                     },
-                    body: JSON.stringify({ app_status: status })  // Replace 'your_new_status' with the desired update
+                    body: JSON.stringify({ app_status: status })  
                     })
                     .then(response => {
                     if (!response.ok) {
                         throw new Error(`Error updating applicant: ${response.statusText}`);
                     }
-                    return response.json();  // Parse response as JSON if successful
+                    return response.json();  
                     })
                     .then(data => {
                     console.log('Applicant status updated successfully:', data);
@@ -86,6 +90,7 @@
             }
 
             let selectedRowId;
+            let status;
 
             window.getSelectedRowId = function(rowElement) {
 
@@ -103,16 +108,22 @@
                     
                     // Check if a first cell exists before accessing its content
                     if (lastCell) {
-                        const status = lastCell.textContent;  // Access the text content of the cell
+                        status = lastCell.textContent;  // Access the text content of the cell
                         console.log("Value of the last cell:", status);
                     } else {
                         console.error("Selected row might not have a last cell (<td>)");
                     }
-
-                document.getElementById('delete-btn').addEventListener('click', deleteForm(selectedID));
-
-                document.getElementById('update-btn').addEventListener('click', updateForm(selectedID, status));
             }
+
+            document.getElementById('delete-btn').addEventListener('click', function() {
+                deleteForm(selectedID);
+            });
+
+            document.getElementById('update-btn').addEventListener('click', function() {
+                let updateStat = prompt("Replace the status of the applicant ('Accepted', 'Rejected')");
+
+                updateForm(selectedID, updateStat);
+            });
 
 
 
@@ -164,35 +175,7 @@
                         </tr>
                     </thead>
                     <tbody id="applicants-table">
-                        <tr>
-                            <td>1</td>
-                            <td>John Doe</td>
-                            <td>Sta.Mesa Manila</td>
-                            <td>johndoe@gmail.com</td>
-                            <td>Pending</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Grace Diaz</td>
-                            <td>Tayuman, Binangonan, Rizal</td>
-                            <td>diazg@gmail.com</td>
-                            <td>Selected</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Felicia Soo</td>
-                            <td>Silang, Cavite</td>
-                            <td>feliciasoo89@gmail.com</td>
-                            <td>For Job Offer</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Timothee Cruz</td>
-                            <td>Makati City</td>
-                            <td>cruztimothee123@gmail.com</td>
-                            <td>Qualified</td>
-                        </tr>
-                        <!-- Add more rows as needed -->
+                        
                     </tbody>
                 </table>
                 <div class="buttons">
